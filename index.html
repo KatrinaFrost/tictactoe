@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css"> <!-- Links CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Arvo|Indie+Flower|Orbitron" rel="stylesheet">
+
+  <title>Tic Tac Toe</title>
+
+</head>
+
+<body>
+
+  <h1> TIC TAC TOE </h1>
+
+  <p class="center italic">Two player game</p>
+  <p class="center">Click on a space below to start game!
+  <br>Good luck!</p>
+
+      <!-- to create board -->
+
+  <div id="board-outer" class="center">
+    <table id="board">
+
+      <!-- Row One -->
+
+      <tr class="row">
+        <td id="tile-0" onclick="placeOnBoard(event)"></td> <!-- creating the click function for the board -->
+        <td id="tile-1" onclick="placeOnBoard(event)"></td>
+        <td id="tile-2" onclick="placeOnBoard(event)"></td>
+      </tr>
+
+      <!-- Row Two -->
+
+      <tr class="row">
+        <td id="tile-3" onclick="placeOnBoard(event)"></td>
+        <td id="tile-4" onclick="placeOnBoard(event)"></td>
+        <td id="tile-5" onclick="placeOnBoard(event)"></td>
+      </tr>
+
+      <!-- Row Three -->
+
+        <tr class="row">
+        <td id="tile-6" onclick="placeOnBoard(event)"></td>
+        <td id="tile-7" onclick="placeOnBoard(event)"></td>
+        <td id="tile-8" onclick="placeOnBoard(event)"></td>
+      </tr>
+
+    </table>
+
+  </div>
+
+    <br>
+    <br>
+    <br>
+
+  <div class="center button">
+    <button id="replay" onclick="replay()">Replay</button> <!-- Creates reply button and calls it from js -->
+  </div>
+
+  <script src="main.js"></script>
+
+</body>
+
+</html>
