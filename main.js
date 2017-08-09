@@ -3,6 +3,8 @@
 console.log("YO!");
 
 //-- Defining players one and two by creating an object --------------------- //
+let numberOfGamesPlayed = 0;
+let gameIsOver = false;
 
 let players = [
   {
@@ -40,11 +42,13 @@ let turn = 0; // Creating a function for players turn
 //-- Adds the symbol to the board ------------------------------------------- //
 
 let placeOnBoard = function(event) {
-  // uses the target and stamps symbol on board from the HTML
-  event.currentTarget.innerHTML = players[turn].playerSymbol;
-  checkForWin(); // calling function
-  checkForDraw(); // calling function on
-  changePlayer(); // calling function on
+  if(event.currentTarget.innerHTML === "" && gameIsOver === false) {
+    // uses the target and stamps symbol on board from the HTML
+    event.currentTarget.innerHTML = players[turn].playerSymbol;
+    checkForWin(); // calling function
+    checkForDraw(); // calling function on
+    changePlayer(); // calling function on
+  }
 }
 
 // -- Change Players -------------------------------------------------------- //
@@ -73,7 +77,15 @@ let checkForDraw = function() {
   }
   if (tileHasBeenUsedNumber == 9) { // If all tiles have been used
     alert("It's a draw!"); // It is a draw
+    gameOver();
+    replay();
   }
+}
+
+let gameOver = function(){
+  numberOfGamesPlayed ++;
+  gameIsOver = true;
+  announceWinner();
 }
 
 // -- Winning Line ---------------------------------------------------------- //
@@ -106,11 +118,12 @@ let checkForWin = function() {
       }
     }
     if (winningSequence === 3) {
-      // alert(playersTurn.playerName + " is the winner!");
+      alert(players[turn].playerName + " is the winner!");
       players[turn].score++;
       console.log(players[turn].score);
-      document.getElementById(`${players[turn].elementName}`).innerHTML = players[turn].score
-      return;
+      document.getElementById(`${players[turn].elementName}`).innerHTML = players[turn].score;
+      gameOver();
+      replay();
     }
   }
 }
@@ -121,15 +134,33 @@ let replay = function () {
   for (var i = 0; i < 9; i++) { // create a loop between 1-9 and
     document.getElementById('tile-'+i).innerHTML = ""; // grabs from HTML index and clears it
   }
-}
+  gameIsOver = false;
 
-// -- Score board ----------------------------------------------------------- //
-
-let scoreBoard = function() {
-  let score = 0;
-  let playerScore = playersTurn.winningLines;
-  for (var i = 0; i < winningLines.length; i++) {
-}
 }
 
 // -- Reset game after three clicks ------------------------------------------//
+
+let announceWinner = function () {
+  if (numberOfGamesPlayed === 3){
+    if (players[0].score > players[1].score){
+      alert("Winner found" + players[0].playerName);
+    } else if (players[1].score < players[0].score) {
+      alert("Winner found" + players[1].playerName);
+    } else {
+      alert("It's a match better rematch!")
+    }
+    numberOfGamesPlayed = 0;
+    clearScoreBoard();
+  }
+}
+
+let clearScoreBoard = function () {
+  players[0].score = 0;
+  players[1].score = 0;
+  document.getElementById(`${players[0].elementName}`).innerHTML = players[turn].score;
+  document.getElementById(`${players[1].elementName}`).innerHTML = players[turn].score;
+}
+
+let reset = function () {
+
+}
