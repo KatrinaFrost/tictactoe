@@ -21,7 +21,7 @@
   <p class="center">Click on a space below to start game!
   <br>Good luck!</p>
 
-      <!-- to create board -->
+      <!-- To create board -->
 
   <div id="board-outer" class="center">
     <table id="board">
@@ -58,11 +58,30 @@
     <br>
     <br>
 
-  <div class="center button">
-    <button id="replay" onclick="replay()">Replay</button> <!-- Creates reply button and calls it from js -->
+  <!-- Scoreboard -->
+
+  <div class="playerOne" align="center">
+    <div class="player">
+      <h4>Player 1</h4>
+      <div id="scoreOne" class="score-box">
+        0
+      </div>
+    </div>
+    <div id="playerTwo" class="player">
+      <h4>Player 2</h4>
+      <div id="scoreTwo" class="score-box">
+        0
+      </div>
+    </div>
   </div>
 
-  <script src="main.js"></script>
+  <!-- Reply button -->
+
+  <div class="center button">
+    <button id="replay" onclick="replay()">Replay</button> <!-- Creates reply button and calls it from JS -->
+  </div>
+
+  <script src="main.js"></script> <!-- Linking JS -->
 
 </body>
 
