@@ -1,102 +1,240 @@
 body {
-  background-color: #4897D8;
+  background-color: #a5dad2;
+  margin: 0;
 }
 
-.center {
+header {
+  background-color: #A9A9A9;
+  opacity: 1;
+}
+
+.center { /*centers board*/
    margin-right: auto;
    margin-left: auto;
 }
 
-.italic {
-   font-style: italic;
-   text-decoration: underline;
+.no-border-top {
+  border-top: 0;
+}
+
+.no-border-left {
+  border-left: 0;
+}
+
+.no-border-right {
+  border-right: 0;
+}
+
+.no-border-bottom {
+  border-bottom: 0;
 }
 
 /* ELEMENT STYLES */
-h1 {
+
+h1 { /* title */
    text-align: center;
    font-size: 36px;
    font-family: 'Arvo', serif;
-   color: #A9A9A9;
-   border: 0;
-   padding: 3px;
+   color: #a5dad2;
+   background-color: #A9A9A9;
+   padding: 10px;
    font-family: 'Arvo', serif;
+   width: 100%;
+   letter-spacing: 60px;
+   margin: 0px;
 }
 
 p {
    text-align: center;
+   font-size: 20px;
    font-family: 'Arvo', serif;
-   line-height: 16pt;
+   line-height: 10pt;
    color: #A9A9A9;
-   padding:3px;
+   padding:10px;
+   letter-spacing: 5px;
 }
 
 .button {
    text-align: center;
 }
 
-#replay {
+#board {
+  margin: 0 auto;
+}
+
+#button {
    font-size: 12pt;
    color: #CAEBF2;
    background-color: #A9A9A9;
    border-radius: 5px;
+   padding: 10px;
 }
 
 /* BOARD STYLES */
 #board-outer {
-   height: 340px;
-   width: 340px;
-   background-color: #4897D8;
+   height: 400px;
+   width: 400px;
+   background-color: #a5dad2;
    overflow: hidden;
+   padding-top: 50px;
 }
 
-#board {
-   width: 354px;
-   height: 354px;
-   border-spacing:0;
-   margin-left: -2px; /* - removes the outer edge */
-   margin-top: -2px; /* - removes the outer edge */
+.game-container {
+  position: relative;
+  width: 90%;
+  margin: 5%;
+}
+
+#board img {
+  width: 150px;
+  height: 150px;
+}
+
+#playerOneScore {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#playerOneScore img, #playerTwoScore img {
+  width: 100px;
+  display: block;
+}
+
+.win {
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+  animation-name: win;
+  animation-duration: 2s;
+}
+
+/* Standard syntax */
+@keyframes win {
+    0%   {transform: rotate(0deg)}
+    25%  {transform: rotate(20deg)}
+    50%   {transform: rotate(0deg)}
+    75%   {transform: rotate(-20deg)}
+    100%  {transform: rotate(0deg)}
+}
+
+#pop-up {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  width: 60%;
+  height: 30%;
+  left: 18%;
+  top: 18%;
+  padding: 2%;
+  background: rgba(255,255,255,.7);
+}
+
+#pop-up p {
+  line-height: normal;
+  color: black;
+  margin: 105px;
+  text-align: center;
+  font-size: 40px;
+}
+
+#playerTwoScore {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 td {
-   height: 80px;
-   width: 80px;
+  cursor: pointer;
+   height: 200px;
+   width: 200px;
    text-align: center;
    font-family: sans-serif;
-   font-size: 40pt;
-   border-collapse: collapse;
-   border: 2px solid #4897D8;
+   font-size: 50pt;
+   border: 2px solid #f1f2f2;
    text-transform: uppercase;
-   background-color: #FA6E59;
+   background-color: #a5dad2;
 }
 
 score-board {
-  text-align: center;
-  padding: 25px;
-  padding-left: 100px;
-  text-align: center;
+  border: 3px solid #A9A9A9;
+  padding: 30px;
+  display: inline-block;
 }
+
 .player {
   display: inline-block;
   padding: 15px;
+  color: #f1f2f2;
+  font-size: 20px;
 }
+
 .player h4 {
   font-weight: bold;
   font-family: 'Arvo', serif;
-}
-.score-box {
-  border: 3px solid black;
-  padding: 30px;
-  color: #F8A055;
+  color: #A9A9A9;
+  font-size: 20px;
 }
 
-.x {
-   width: 100%;
-   height: 100%;
-   background-color: blue;
+.score-box, score-box {
+  border: 3px solid #A9A9A9;
+  padding: 30px;
+  font-size: 50px;
+  display: inline-block;
 }
-.o {
-   width: 100%;
-   height: 100%;
-   background-color: red;
+
+/* Nav Bar */
+
+<style>
+body {margin:0;}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #A9A9A9;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #f1f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #a5dad2;
+}
+
+#reset {
+  background: darkgrey;
+  font-size: 18px;
+  width: 150px;
+  height: 42px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+#reset:hover {
+  color: darkgrey;
+  background: white;
+}
+
+.active {
+    background-color: #A9A9A9;
+}
+
+a.linkedin
+{
+  color: #0077b5;
+  display: left;
 }

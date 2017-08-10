@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -6,80 +7,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://use.fontawesome.com/181429a615.js"></script>
   <link rel="stylesheet" href="style.css"> <!-- Links CSS -->
   <link href="https://fonts.googleapis.com/css?family=Arvo|Indie+Flower|Orbitron" rel="stylesheet">
 
-  <title>Tic Tac Toe</title>
+  <title>&hearts; Tic Tac Toe</title>
 
 </head>
 
-<body>
+<body onload="init()">
 
-  <h1> TIC TAC TOE </h1>
+  <div id="pop-up">
+    <p>Notification Text</p>
+  </div>
 
-  <p class="center italic">Two player game</p>
-  <p class="center">Click on a space below to start game!
-  <br>Good luck!</p>
+  <h1>&hearts;  TIC TAC TOE  &hearts;</h1>
 
-      <!-- To create board -->
+  <p>This is a Two player game! Click on any space below to start the game!</p>
 
-  <div id="board-outer" class="center">
+  <!-- To create board -->
+
+  <div class="game-container">
+
+    <!-- Scoreboard -->
+
+    <div class="player" id="playerOneScore">
+      <h4>Player 1</h4>
+      <div id="scoreOne" class="score-box">0</div>
+    </div>
+
     <table id="board">
 
-      <!-- Row One -->
-
       <tr class="row">
-        <td id="tile-0" onclick="placeOnBoard(event)"></td> <!-- creating the click function for the board -->
-        <td id="tile-1" onclick="placeOnBoard(event)"></td>
-        <td id="tile-2" onclick="placeOnBoard(event)"></td>
+        <td class="no-border-left no-border-top" id="tile-0" onclick="placeOnBoard(event)"></td>
+        <td class="no-border-top" id="tile-1" onclick="placeOnBoard(event)"></td>
+        <td class="no-border-right no-border-top" id="tile-2" onclick="placeOnBoard(event)"></td>
       </tr>
 
-      <!-- Row Two -->
-
       <tr class="row">
-        <td id="tile-3" onclick="placeOnBoard(event)"></td>
+        <td class="no-border-left" id="tile-3" onclick="placeOnBoard(event)"></td>
         <td id="tile-4" onclick="placeOnBoard(event)"></td>
-        <td id="tile-5" onclick="placeOnBoard(event)"></td>
+        <td class="no-border-right" id="tile-5" onclick="placeOnBoard(event)"></td>
       </tr>
 
-      <!-- Row Three -->
-
-        <tr class="row">
-        <td id="tile-6" onclick="placeOnBoard(event)"></td>
-        <td id="tile-7" onclick="placeOnBoard(event)"></td>
-        <td id="tile-8" onclick="placeOnBoard(event)"></td>
+      <tr class="row">
+        <td class="no-border-left no-border-bottom" id="tile-6" onclick="placeOnBoard(event)"></td>
+        <td class="no-border-bottom" id="tile-7" onclick="placeOnBoard(event)"></td>
+        <td class="no-border-right no-border-bottom" id="tile-8" onclick="placeOnBoard(event)"></td>
       </tr>
 
     </table>
 
-  </div>
-
-    <br>
-    <br>
-    <br>
-
-  <!-- Scoreboard -->
-
-  <div class="playerOne" align="center">
-    <div class="player">
-      <h4>Player 1</h4>
-      <div id="scoreOne" class="score-box">
-        0
-      </div>
-    </div>
-    <div id="playerTwo" class="player">
+    <div id="playerTwoScore" class="player">
       <h4>Player 2</h4>
-      <div id="scoreTwo" class="score-box">
-        0
-      </div>
+      <div id="scoreTwo" class="score-box">0</div>
     </div>
+
   </div>
 
-  <!-- Reply button -->
+  <!-- Replay button -->
 
-  <div class="center button">
-    <button id="replay" onclick="replay()">Replay</button> <!-- Creates reply button and calls it from JS -->
+  <div class="button">
+    <button id="reset" onclick="reset()">Replay</button> <!-- Creates reply button and calls it from JS -->
   </div>
+
+  <!-- Nav Bar -->
+
+  <!-- <ul>
+    <li><a class="active" href="home.html">Home</a></li>
+    <li><a href="#instructions">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul> -->
 
   <script src="main.js"></script> <!-- Linking JS -->
 

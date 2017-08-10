@@ -9,19 +9,25 @@ let gameIsOver = false;
 let players = [
   {
     score : 0,
-    playerSymbol : "X",
+    playerSymbol : '<img src="img/pusheen_cat_unicorn.png">',
     playerName : "Player One",
     id : 0,
     elementName : "scoreOne"
   },
   {
     score : 0,
-    playerSymbol : "0",
+    playerSymbol : '<img src="img/pusheen_cat_man.png">',
     playerName : "Player Two",
     id : 1,
     elementName : "scoreTwo"
   }
 ]
+
+// stuff to do onload of app.
+function init (){
+  document.getElementById('playerOneScore').innerHTML += '<div id="avatar-0">' + players[0].playerSymbol + '</div>';
+  document.getElementById('playerTwoScore').innerHTML += '<div id="avatar-1">' + players[1].playerSymbol + '</div>';
+}
 
 // let playerOne = {
 //     score : 0,
@@ -45,9 +51,11 @@ let placeOnBoard = function(event) {
   if(event.currentTarget.innerHTML === "" && gameIsOver === false) {
     // uses the target and stamps symbol on board from the HTML
     event.currentTarget.innerHTML = players[turn].playerSymbol;
+
     checkForWin(); // calling function
     checkForDraw(); // calling function on
     changePlayer(); // calling function on
+
   }
 }
 
@@ -76,10 +84,38 @@ let checkForDraw = function() {
     } // Grabs from HTML index and clears it
   }
   if (tileHasBeenUsedNumber == 9) { // If all tiles have been used
-    alert("It's a draw!"); // It is a draw
+    gameNotification("It's a draw!");
     gameOver();
-    replay();
   }
+}
+
+function gameNotification(message){
+
+  let popUp = document.getElementById('pop-up');
+
+  popUp.innerHTML = '<p>' + message + '</p>';
+
+  window.setTimeout(function(){
+    popUp.style.display = 'block';
+  }, 1000);
+
+  window.setTimeout(function(){
+    popUp.style.display = 'none';
+    replay();
+  }, 6000);
+
+  window.setTimeout(function(){
+
+    // document.getElementById("myDIV").classList.contains("mystyle")
+
+    if(document.getElementById('avatar-0').classList.contains("win")){
+      document.getElementById('avatar-0').classList.remove("win");
+    }
+    if(document.getElementById('avatar-1').classList.contains("win")){
+      document.getElementById('avatar-1').classList.remove("win");
+    }
+  }, 6000);
+
 }
 
 let gameOver = function(){
@@ -113,22 +149,24 @@ let checkForWin = function() {
   for (var i = 0; i < winningLines.length; i++) { // Loops through rows of winning lines
     winningSequence = 0; // Resets winning sequence to 0
     for (var j = 0; j < winningLines[i].length; j++) { // Loops through each item in win line e.g.0,1,2
-      if (document.getElementById("tile-" + winningLines[i][j]).innerHTML === playerSymbol){ // to find a match (reads the columns)
+      if (document.getElementById("tile-" + winningLines[i][j]).innerHTML == playerSymbol){ // to find a match (reads the columns)
         winningSequence ++;
       }
     }
     if (winningSequence === 3) {
-      alert(players[turn].playerName + " is the winner!");
+      gameNotification(players[turn].playerName + " is the winner!");
+
+      document.getElementById('avatar-'+ players[turn].id).className += "win";
+
       players[turn].score++;
       console.log(players[turn].score);
       document.getElementById(`${players[turn].elementName}`).innerHTML = players[turn].score;
       gameOver();
-      replay();
     }
   }
 }
 
-// -- Reset button ---------------------------------------------------------- //
+// -- Replay button ---------------------------------------------------------- //
 
 let replay = function () {
   for (var i = 0; i < 9; i++) { // create a loop between 1-9 and
@@ -142,12 +180,17 @@ let replay = function () {
 
 let announceWinner = function () {
   if (numberOfGamesPlayed === 3){
+
     if (players[0].score > players[1].score){
-      alert("Winner found" + players[0].playerName);
+
+      gameNotification("Winner found" + players[0].playerName);
+
     } else if (players[1].score < players[0].score) {
-      alert("Winner found" + players[1].playerName);
+
+      gameNotification("Winner found" + players[1].playerName);
+
     } else {
-      alert("It's a match better rematch!")
+      gameNotification("It's a match better rematch!");
     }
     numberOfGamesPlayed = 0;
     clearScoreBoard();
@@ -161,6 +204,9 @@ let clearScoreBoard = function () {
   document.getElementById(`${players[1].elementName}`).innerHTML = players[turn].score;
 }
 
-let reset = function () {
 
+let reset = function () {
+  clearScoreBoard();
+  replay();
+  document.getElementById('pop-up').style.display = 'none';
 }
