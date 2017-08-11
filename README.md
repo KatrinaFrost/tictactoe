@@ -10,7 +10,7 @@ https://katrinafrost.github.io/tictactoe/
 
 The game is to be played between two humans.
 
-Player One will be ‘Pusheen the Unicorn’ and Player Two‘Pusheen the man’.
+Player One will be ‘Pusheen the Unicorn’ and Player Two‘Pusheen the man’
 to mark their respective square.
 
 The game starts with one of the players and the game ends when one of the players has
@@ -21,15 +21,15 @@ If no one wins, then the game will be a draw.
 After three rounds, the game will declare the winner or if it is a match and then the board will reset.
 
 
-#Built With
+##Built With
 
 My bare hands, stress and love!
 
-#Authors
+##Authors
 
 Katrina Frost
 
-#License
+##License
 
 The MIT License (MIT)
 
