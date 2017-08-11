@@ -1,12 +1,11 @@
 //---------------------- Tic Tac Toe - Project 0 ---------------------------- //
 
-console.log("YO!");
-
 //-- Defining players one and two by creating an object --------------------- //
+
 let numberOfGamesPlayed = 0;
 let gameIsOver = false;
 
-let players = [
+let players = [ // array of player objects
   {
     score : 0,
     playerSymbol : '<img src="img/pusheen_cat_unicorn.png">',
@@ -23,29 +22,15 @@ let players = [
   }
 ]
 
-// stuff to do onload of app.
+// what do I do on page load - this adds the cats to oher persons score
 function init (){
   document.getElementById('playerOneScore').innerHTML += '<div id="avatar-0">' + players[0].playerSymbol + '</div>';
   document.getElementById('playerTwoScore').innerHTML += '<div id="avatar-1">' + players[1].playerSymbol + '</div>';
 }
 
-// let playerOne = {
-//     score : 0,
-//     playerSymbol : "X",
-//     playerName : "Player One",
-//     id : 0
-// }
-//
-// let playerTwo = {
-//     score : 1,
-//     playerSymbol : "0",
-//     playerName : "Player Two",
-//     id : 1
-// }
-
 let turn = 0; // Creating a function for players turn
 
-//-- Adds the symbol to the board ------------------------------------------- //
+//-- Adds the symbol to the board - click event ----------------------------- //
 
 let placeOnBoard = function(event) {
   if(event.currentTarget.innerHTML === "" && gameIsOver === false) {
@@ -53,8 +38,8 @@ let placeOnBoard = function(event) {
     event.currentTarget.innerHTML = players[turn].playerSymbol;
 
     checkForWin(); // calling function
-    checkForDraw(); // calling function on
-    changePlayer(); // calling function on
+    checkForDraw(); // calling function
+    changePlayer(); // calling function
 
   }
 }
@@ -62,7 +47,6 @@ let placeOnBoard = function(event) {
 // -- Change Players -------------------------------------------------------- //
 
 let changePlayer = function () {
-// debugger;
 
   if (turn === 0) {
     //Switch to player two
@@ -89,43 +73,35 @@ let checkForDraw = function() {
   }
 }
 
-function gameNotification(message){
+// -- Pop up notification --------------------------------------------------- //
 
-  let popUp = document.getElementById('pop-up');
+function gameNotification(message) {
 
-  popUp.innerHTML = '<p>' + message + '</p>';
+  let popUp = document.getElementById('pop-up'); // pop up from HTML
 
-  window.setTimeout(function(){
-    popUp.style.display = 'block';
-  }, 1000);
+  popUp.innerHTML = '<p>' + message + '</p>'; // adds the text to the popup
 
-  window.setTimeout(function(){
-    popUp.style.display = 'none';
-    replay();
-  }, 6000);
+  window.setTimeout(function() { // after one 1000ms show pop up
+    popUp.style.display = 'block'; // display pop up
+  }, 1000); // milliseconds
 
-  window.setTimeout(function(){
-
-    // document.getElementById("myDIV").classList.contains("mystyle")
-
-    if(document.getElementById('avatar-0').classList.contains("win")){
-      document.getElementById('avatar-0').classList.remove("win");
-    }
-    if(document.getElementById('avatar-1').classList.contains("win")){
-      document.getElementById('avatar-1').classList.remove("win");
-    }
-  }, 6000);
-
+  window.setTimeout(function() {
+    popUp.style.display = 'none'; // pop up is hidden
+    replay(); // clears the board
+  }, 6000); // milliseconds
 }
 
+// -- Game over and check for winner announcment ---------------------------- //
+
 let gameOver = function(){
-  numberOfGamesPlayed ++;
-  gameIsOver = true;
-  announceWinner();
+  numberOfGamesPlayed ++; // number of games played plus one
+  gameIsOver = true; // boolean set to true - game has ended
+  if (numberOfGamesPlayed === 3) { // when three games are played announce winner
+    announceWinner(); // calls announcment
+  };
 }
 
 // -- Winning Line ---------------------------------------------------------- //
-
 
 let winningLines = [
   //across
@@ -144,69 +120,94 @@ let winningLines = [
 // -- Check for a win ------------------------------------------------------- //
 
 let checkForWin = function() {
-  let winningSequence = 0;
+  let winningSequence = 0; // start at 0
   let playerSymbol = players[turn].playerSymbol; // Checks the symbol matches the win lines
-  for (var i = 0; i < winningLines.length; i++) { // Loops through rows of winning lines
+  for (var i = 0; i < winningLines.length; i++) { // Loops through rows of winning lines to find a winner
     winningSequence = 0; // Resets winning sequence to 0
     for (var j = 0; j < winningLines[i].length; j++) { // Loops through each item in win line e.g.0,1,2
       if (document.getElementById("tile-" + winningLines[i][j]).innerHTML == playerSymbol){ // to find a match (reads the columns)
         winningSequence ++;
       }
     }
-    if (winningSequence === 3) {
-      gameNotification(players[turn].playerName + " is the winner!");
+    if (winningSequence === 3) { // if all three are found there is a winner
+      gameNotification(players[turn].playerName + " is the winner!"); // pop up
 
-      document.getElementById('avatar-'+ players[turn].id).className += "win";
+      animateWinner(); // makes pusheen wobble
 
-      players[turn].score++;
-      console.log(players[turn].score);
-      document.getElementById(`${players[turn].elementName}`).innerHTML = players[turn].score;
-      gameOver();
+// -- Check for a win ------------------------------------------------------- //
+
+      players[turn].score++; // add one to the current players score
+      document.getElementById(`${players[turn].elementName}`).innerHTML = players[turn].score; // updating score on the view
+      gameOver(); // triggers game over and closes down game just played
     }
   }
+}
+
+// -- Makes pusheen wobble -------------------------------------------------- //
+
+let animateWinner = function() {
+
+  document.getElementById('avatar-'+ players[turn].id).className += "win"; // adds a class called win and triggers CSS animation
+
+  window.setTimeout(function() { // after 6s
+
+    if(document.getElementById('avatar-0').classList.contains("win")) // removes class for player one
+    {
+      document.getElementById('avatar-0').classList.remove("win"); // re adds class to animate everytime player wins
+    }
+    if(document.getElementById('avatar-1').classList.contains("win")) // removes class for player two
+    {
+      document.getElementById('avatar-1').classList.remove("win"); // re adds class to animate everytime player wins
+    }
+  }, 6000);
 }
 
 // -- Replay button ---------------------------------------------------------- //
 
 let replay = function () {
-  for (var i = 0; i < 9; i++) { // create a loop between 1-9 and
-    document.getElementById('tile-'+i).innerHTML = ""; // grabs from HTML index and clears it
+  for (var i = 0; i < 9; i++) { // create a loop between 1-9 and...
+    document.getElementById('tile-'+i).innerHTML = ""; // grabs from HTML index and clears the board of pusheens
   }
-  gameIsOver = false;
+  gameIsOver = false; // when the game is back in play and player can click the board again
 
 }
 
 // -- Reset game after three clicks ------------------------------------------//
 
 let announceWinner = function () {
-  if (numberOfGamesPlayed === 3){
 
-    if (players[0].score > players[1].score){
+  if (players[0].score > players[1].score){ // if player one score is more than player two
 
-      gameNotification("Winner found" + players[0].playerName);
+    gameNotification(players[0].playerName + " is the winner!"); // notifies the winner and the pop up and sends message
 
-    } else if (players[1].score < players[0].score) {
+  } else if (players[1].score > players[0].score) { // else player two score is more than player one pop activated
 
-      gameNotification("Winner found" + players[1].playerName);
+    gameNotification(players[1].playerName + " is the winner!");
 
-    } else {
-      gameNotification("It's a match better rematch!");
-    }
-    numberOfGamesPlayed = 0;
-    clearScoreBoard();
+  } else {
+    gameNotification("It's a match better rematch!"); // else it is a draw
   }
+  numberOfGamesPlayed = 0; // reset the game to 0
+
+  window.setTimeout(function() { //clears score board after 6s
+    clearScoreBoard();
+  }, 6000);
 }
+
+// -- Clears score on board and players object -------------------------------//
+
 
 let clearScoreBoard = function () {
-  players[0].score = 0;
+  players[0].score = 0; // objects - sets both players score to 0
   players[1].score = 0;
-  document.getElementById(`${players[0].elementName}`).innerHTML = players[turn].score;
-  document.getElementById(`${players[1].elementName}`).innerHTML = players[turn].score;
+  document.getElementById(`${players[0].elementName}`).innerHTML = players[turn].score; // elements
+  document.getElementById(`${players[1].elementName}`).innerHTML = players[turn].score; // updates HTML with score
 }
 
+// -- Reset game after three clicks ------------------------------------------//
 
 let reset = function () {
-  clearScoreBoard();
-  replay();
-  document.getElementById('pop-up').style.display = 'none';
+  clearScoreBoard(); // clears score board
+  replay(); // clears game board
+  document.getElementById('pop-up').style.display = 'none'; // clears score board
 }

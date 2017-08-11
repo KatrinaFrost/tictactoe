@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://use.fontawesome.com/181429a615.js"></script>
+
   <link rel="stylesheet" href="style.css"> <!-- Links CSS -->
   <link href="https://fonts.googleapis.com/css?family=Arvo|Indie+Flower|Orbitron" rel="stylesheet">
 
@@ -15,26 +15,29 @@
 
 </head>
 
+<!-- immediatly invoking function expression to run the function before the global variable changed, so that the expected behaviour of code can be retained -->
 <body onload="init()">
 
   <div id="pop-up">
     <p>Notification Text</p>
   </div>
 
-  <h1>&hearts;  TIC TAC TOE  &hearts;</h1>
+  <h1>&hearts; TIC TAC TOE &hearts;</h1>
 
   <p>This is a Two player game! Click on any space below to start the game!</p>
 
-  <!-- To create board -->
+  <!-- To create board - container made to wrap around everything inside the board -->
 
   <div class="game-container">
 
-    <!-- Scoreboard -->
+  <!-- Scoreboard for player one to style individually -->
 
     <div class="player" id="playerOneScore">
       <h4>Player 1</h4>
       <div id="scoreOne" class="score-box">0</div>
     </div>
+
+  <!-- Main game board, created divs as needed to individually style game  -->
 
     <table id="board">
 
@@ -58,6 +61,8 @@
 
     </table>
 
+  <!-- Scoreboard for player two to style individually -->
+
     <div id="playerTwoScore" class="player">
       <h4>Player 2</h4>
       <div id="scoreTwo" class="score-box">0</div>
@@ -70,14 +75,6 @@
   <div class="button">
     <button id="reset" onclick="reset()">Replay</button> <!-- Creates reply button and calls it from JS -->
   </div>
-
-  <!-- Nav Bar -->
-
-  <!-- <ul>
-    <li><a class="active" href="home.html">Home</a></li>
-    <li><a href="#instructions">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul> -->
 
   <script src="main.js"></script> <!-- Linking JS -->
 

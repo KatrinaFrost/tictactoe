@@ -1,14 +1,53 @@
+/* Main page styles */
+
 body {
   background-color: #a5dad2;
   margin: 0;
 }
 
 header {
-  background-color: #A9A9A9;
+  background-color: #7a7878;
   opacity: 1;
 }
 
-.center { /*centers board*/
+h1 { /* title */
+   text-align: center;
+   font-size: 36px;
+   font-family: 'Arvo', serif;
+   color: #a5dad2;
+   background-color: #7a7878;
+   padding: 10px;
+   font-family: 'Arvo', serif;
+   width: 100%;
+   letter-spacing: 60px;
+   margin: 0px;
+}
+
+p {
+   text-align: center;
+   font-size: 20px;
+   font-family: 'Arvo', serif;
+   line-height: 10pt;
+   color: #7a7878;
+   padding:10px;
+   letter-spacing: 5px;
+}
+
+/* Main game board styling -would rather used 2D arrays in future instead of table */
+
+td { /* Styles cells */
+  cursor: pointer;
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 50pt;
+  border: 2px solid #f1f2f2;
+  text-transform: uppercase;
+  background-color: #a5dad2;
+}
+
+.center { /*centers board - as I used a table and wanted to hide the outer boader */
    margin-right: auto;
    margin-left: auto;
 }
@@ -29,77 +68,26 @@ header {
   border-bottom: 0;
 }
 
-/* ELEMENT STYLES */
-
-h1 { /* title */
-   text-align: center;
-   font-size: 36px;
-   font-family: 'Arvo', serif;
-   color: #a5dad2;
-   background-color: #A9A9A9;
-   padding: 10px;
-   font-family: 'Arvo', serif;
-   width: 100%;
-   letter-spacing: 60px;
-   margin: 0px;
-}
-
-p {
-   text-align: center;
-   font-size: 20px;
-   font-family: 'Arvo', serif;
-   line-height: 10pt;
-   color: #A9A9A9;
-   padding:10px;
-   letter-spacing: 5px;
-}
-
 .button {
    text-align: center;
 }
 
-#board {
-  margin: 0 auto;
-}
-
-#button {
-   font-size: 12pt;
-   color: #CAEBF2;
-   background-color: #A9A9A9;
-   border-radius: 5px;
-   padding: 10px;
-}
-
-/* BOARD STYLES */
-#board-outer {
-   height: 400px;
-   width: 400px;
-   background-color: #a5dad2;
-   overflow: hidden;
-   padding-top: 50px;
-}
-
-.game-container {
+.game-container { /* Keeps everything centered */
   position: relative;
   width: 90%;
   margin: 5%;
 }
 
-#board img {
+#board img { /* Image sizing */
   width: 150px;
   height: 150px;
 }
 
-#playerOneScore {
-  position: absolute;
-  left: 0;
-  top: 0;
+#board { /* Keeps tiles centered */
+  margin: 0 auto;
 }
 
-#playerOneScore img, #playerTwoScore img {
-  width: 100px;
-  display: block;
-}
+/* To make pusheens wobble (animation)*/
 
 .win {
   -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
@@ -108,7 +96,6 @@ p {
   animation-duration: 2s;
 }
 
-/* Standard syntax */
 @keyframes win {
     0%   {transform: rotate(0deg)}
     25%  {transform: rotate(20deg)}
@@ -117,49 +104,7 @@ p {
     100%  {transform: rotate(0deg)}
 }
 
-#pop-up {
-  display: none;
-  position: absolute;
-  z-index: 100;
-  width: 60%;
-  height: 30%;
-  left: 18%;
-  top: 18%;
-  padding: 2%;
-  background: rgba(255,255,255,.7);
-}
-
-#pop-up p {
-  line-height: normal;
-  color: black;
-  margin: 105px;
-  text-align: center;
-  font-size: 40px;
-}
-
-#playerTwoScore {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-td {
-  cursor: pointer;
-   height: 200px;
-   width: 200px;
-   text-align: center;
-   font-family: sans-serif;
-   font-size: 50pt;
-   border: 2px solid #f1f2f2;
-   text-transform: uppercase;
-   background-color: #a5dad2;
-}
-
-score-board {
-  border: 3px solid #A9A9A9;
-  padding: 30px;
-  display: inline-block;
-}
+/* Players score boxes */
 
 .player {
   display: inline-block;
@@ -171,70 +116,73 @@ score-board {
 .player h4 {
   font-weight: bold;
   font-family: 'Arvo', serif;
-  color: #A9A9A9;
+  color: #7a7878;
   font-size: 20px;
 }
 
+#playerOneScore {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#playerTwoScore {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* Players images */
+
+#playerOneScore img, #playerTwoScore img {
+  width: 100px;
+  display: block;
+}
+
 .score-box, score-box {
-  border: 3px solid #A9A9A9;
+  border: 3px solid #7a7878;
   padding: 30px;
   font-size: 50px;
   display: inline-block;
 }
 
-/* Nav Bar */
+/* Pop up box appears only when player has won or else it is hidden */
 
-<style>
-body {margin:0;}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #A9A9A9;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+#pop-up {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  width: 60%;
+  height: 30%;
+  left: 18%;
+  top: 18%;
+  padding: 2%;
+  background: rgba(255,255,255,.7);
 }
 
-li {
-    float: left;
+/* message inside pop up box */
+
+#pop-up p {
+  line-height: normal;
+  color: #7a7878;
+  margin: 80px;
+  text-align: center;
+  font-size: 40px;
 }
 
-li a {
-    display: block;
-    color: #f1f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover:not(.active) {
-    background-color: #a5dad2;
-}
+/* Reset button & Hover */
 
 #reset {
-  background: darkgrey;
+  background: #7a7878;
   font-size: 18px;
   width: 150px;
   height: 42px;
   border-radius: 10px;
-  color: white;
+  color: #f1f2f2;
   cursor: pointer;
 }
 
 #reset:hover {
-  color: darkgrey;
-  background: white;
-}
-
-.active {
-    background-color: #A9A9A9;
-}
-
-a.linkedin
-{
-  color: #0077b5;
-  display: left;
+  color: #7a7878;
+  background: #f1f2f2;
 }
