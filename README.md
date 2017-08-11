@@ -20,6 +20,41 @@ If no one wins, then the game will be a draw.
 
 After three rounds, the game will declare the winner or if it is a match and then the board will reset.
 
+## What issues I experienced ##
+
+- Does not currently add up best of three score
+- Timings are a bit off for the pop up box
+- JS code is very messy - would like to tidy this up.
+- Issues restyling the replay button
+- Adding in the timeout function
+- Made table in HTML and only found out at 3am on showcase day that I could have done a 2d table in JS.
+- Pusheen kept disappearing
+- I could not work out the animation so a friend kindly helped me. (I will spend time looking into this to understand it)
+
+## What I would like to add ##
+
+- Social media icons
+- Updated pop up and scoreboard when player has won after three rounds of three
+- clean code
+- Rewrite in Jquery
+- Condense code
+- More style in General
+- Pop up fade in fade out
+- Let player choose character
+- Local storage
+- Customer board sizes
+- Networked multiplayer
+
+## What I would do next time ##
+
+- Write my HTML and CSS first
+- Write a list of all variables needed and give variables better names. Then work on them one by one in JS
+- Use Trello to plan my time efficiently
+- DO NOT PANIC CODE
+- Learn more CSS
+- Tackle smaller chunks at a time and make sure they work before moving on to the next thing
+- Git hub often
+- Keep track of my thought process
 
 
 ## Acknowledgments ##
@@ -28,7 +63,7 @@ Pusheen - http://www.pusheen.com/
 Favicon - http://www.favicon-generator.org/
 
 For pretty much everything -
-TA's / Tutors / Class mates in WDI23 and WDI22 at GA. :)
+TA's / Tutors / Class mates in WDI23 and WDI22 at GA.
 www.w3schools.com
 www.stackoverflow.com
 www.htmlcheatsheet.com/js/
