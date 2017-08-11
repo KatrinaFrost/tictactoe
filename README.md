@@ -4,6 +4,13 @@ A simple but not so simple tic tac toe implementation for my first project at Ge
 
 My project uses, HTML, CSS and vanilla JS.
 
+I also used:
+- The command line
+- Source control - git hub
+- Researched using various tutorials, websites, books
+- Small animation
+- Comments in code
+
 ## Game Link and Game rules ##
 
 https://katrinafrost.github.io/tictactoe/
@@ -55,7 +62,6 @@ After three rounds, the game will declare the winner or if it is a match and the
 - Tackle smaller chunks at a time and make sure they work before moving on to the next thing
 - Git hub often
 - Keep track of my thought process
-
 
 ## Acknowledgments ##
 
