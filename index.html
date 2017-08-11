@@ -8,14 +8,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <link rel="stylesheet" href="style.css"> <!-- Links CSS -->
+<!-- Links CSS -->
+
+  <link rel="stylesheet" href="style.css">
+
+<!-- Google font -->
+
   <link href="https://fonts.googleapis.com/css?family=Arvo|Indie+Flower|Orbitron" rel="stylesheet">
 
-  <title>&hearts; Tic Tac Toe</title>
+<!-- Favicon -->
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <title>Tic Tac Toe</title>
 
 </head>
 
 <!-- immediatly invoking function expression to run the function before the global variable changed, so that the expected behaviour of code can be retained -->
+
 <body onload="init()">
 
   <div id="pop-up">
@@ -26,18 +37,18 @@
 
   <p>This is a Two player game! Click on any space below to start the game!</p>
 
-  <!-- To create board - container made to wrap around everything inside the board -->
+<!-- To create board - container made to wrap around everything inside the board -->
 
   <div class="game-container">
 
-  <!-- Scoreboard for player one to style individually -->
+<!-- Scoreboard for player one to style individually -->
 
     <div class="player" id="playerOneScore">
       <h4>Player 1</h4>
       <div id="scoreOne" class="score-box">0</div>
     </div>
 
-  <!-- Main game board, created divs as needed to individually style game  -->
+<!-- Main game board, created divs as needed to individually style game  -->
 
     <table id="board">
 
@@ -61,7 +72,7 @@
 
     </table>
 
-  <!-- Scoreboard for player two to style individually -->
+<!-- Scoreboard for player two to style individually -->
 
     <div id="playerTwoScore" class="player">
       <h4>Player 2</h4>
@@ -70,13 +81,15 @@
 
   </div>
 
-  <!-- Replay button -->
+<!-- Replay button -->
 
   <div class="button">
     <button id="reset" onclick="reset()">Replay</button> <!-- Creates reply button and calls it from JS -->
   </div>
 
-  <script src="main.js"></script> <!-- Linking JS -->
+<!-- Linking JS -->
+
+  <script src="main.js"></script>
 
 </body>
 
