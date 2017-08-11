@@ -4,7 +4,7 @@ A simple but not so simple tic tac toe implementation for my first project at Ge
 
 My project uses, HTML, CSS and vanilla JS.
 
-## Game Link and Game rules
+## Game Link and Game rules ##
 
 https://katrinafrost.github.io/tictactoe/
 
@@ -21,15 +21,21 @@ If no one wins, then the game will be a draw.
 After three rounds, the game will declare the winner or if it is a match and then the board will reset.
 
 
-##Built With
 
-My bare hands, stress and love!
+## Acknowledgments ##
 
-##Authors
+Pusheen - http://www.pusheen.com/
+Favicon - http://www.favicon-generator.org/
 
-Katrina Frost
+For pretty much everything -
+TA's / Tutors / Class mates in WDI23 and WDI22 at GA. :)
+www.w3schools.com
+www.stackoverflow.com
+www.htmlcheatsheet.com/js/
 
-##License
+Taryn - helped to photo shop pusheen for me and add animation last min.
+
+## License ##
 
 The MIT License (MIT)
 
@@ -52,16 +58,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-## Acknowledgments
-
-Pusheen - http://www.pusheen.com/
-Favicon - http://www.favicon-generator.org/
-
-For pretty much everything -
-TA's / Tutors / Class mates in WDI23 and WDI22 at GA. :)
-www.w3schools.com
-www.stackoverflow.com
-www.htmlcheatsheet.com/js/
-
-Taryn - helped to photo shop pusheen for me and add animation last min.
